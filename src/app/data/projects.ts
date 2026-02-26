@@ -1,0 +1,138 @@
+import type { ProjectItem } from "@/app/types/project";
+
+export const projects: ProjectItem[] = [
+  {
+    id: 1,
+    title: "VibeBoard",
+    description:
+      "보드게임 추천·후기 작성·주변 보드게임 카페 검색을 제공하는 웹 서비스",
+    detailedDescription:
+      "Supabase와 카카오 API를 연동해 보드게임 추천, 리뷰, 카페 검색을 하나의 서비스 흐름으로 통합한 프로젝트입니다. 데이터 요청/캐싱 전략과 번들 최적화를 함께 적용해 사용자 체감 성능을 개선했습니다.",
+    highlights: [
+      "React Query 기반 서버 상태 관리로 캐싱/리페칭/invalidateQueries 흐름 최적화",
+      "Lighthouse 성능 점수 47 → 91 개선 (LCP 44.3s → 6.0s, CLS 0.362 → 0, payload 8.4MB → 968KB)",
+      "Vite transformIndexHtml 플러그인으로 LCP 이미지 preload 자동 주입",
+      "Zustand로 인증/테마 상태 관리, initTheme로 FOUC 방지",
+      "Supabase RLS 기반 권한 제어 및 카카오맵 SDK 지연 로딩 적용",
+    ],
+    detailedTechStack:
+      "React 19.2.0, TypeScript 5.9.3, React Query 5.90.12, Zustand 5.0.9, React Router DOM 7.11.0, Vite 7.2.4, Tailwind CSS 4.1.18, Supabase, 카카오 로컬 API, 카카오맵 JavaScript SDK, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2025. 12. ~ 2026. 01.",
+    githubUrl: "https://github.com/guiyoung2/VibeBoard",
+    liveUrl: "https://vibeboard-nine.vercel.app",
+    techStack: [
+      "React",
+      "TypeScript",
+      "React Query",
+      "Zustand",
+      "Tailwind CSS",
+      "Supabase",
+    ],
+    thumbnailSrc: "/projects/vibeboard.webp",
+    thumbnailAlt: "VibeBoard 프로젝트 썸네일",
+  },
+  {
+    id: 2,
+    title: "리뷰 블로그 (LogOfReview)",
+    description: "리뷰들을 작성하고 조회하는 블로그",
+    detailedDescription:
+      "리뷰 작성/조회/댓글 기능을 중심으로 구성한 블로그 프로젝트입니다. 서버 상태 관리, 인증 상태 영속화, 환경별 데이터 전략을 분리해 배포 안정성과 유지보수성을 높였습니다.",
+    highlights: [
+      "React Query queryKey 설계로 카테고리/검색어/정렬 변경 시 자동 재요청",
+      "댓글 CRUD 후 invalidateQueries로 목록 즉시 동기화",
+      "Zustand + persist로 로그인 상태 영속화, Axios 인터셉터로 JWT 자동 주입",
+      "개발/배포 환경별 데이터 전략 분리(JSON Server / 정적 JSON)",
+      "useMemo/useCallback으로 상세 페이지 렌더링 최적화",
+    ],
+    detailedTechStack:
+      "React 19.2.0, TypeScript 5.9.3, React Query 5.90.11, Zustand 5.0.9, Axios, Styled Components, React Router DOM, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2025. 12. ~ 2025. 12.",
+    githubUrl: "https://github.com/guiyoung2/LogOfReview",
+    liveUrl: "https://log-of-review.vercel.app/",
+    techStack: [
+      "React",
+      "TypeScript",
+      "React Query",
+      "Zustand",
+      "Styled Components",
+    ],
+    thumbnailSrc: "/projects/logofreview.webp",
+    thumbnailAlt: "리뷰 블로그 (LogOfReview) 프로젝트 썸네일",
+  },
+  {
+    id: 3,
+    title: "emotionDiary",
+    description: " 투두리스트 형식처럼 하루 감정을 기록하는 프로젝트입니다",
+    detailedDescription:
+      "하루 감정을 기록/수정/삭제하는 흐름을 중심으로 구현한 웹앱입니다. 상태 관리의 명확한 경계를 목표로 Context 분리, reducer 설계, localStorage 동기화를 체계적으로 적용했습니다.",
+    highlights: [
+      "Context API + useReducer로 전역 상태 관리 및 영속화 통합 처리",
+      "INIT/CREATE/UPDATE/DELETE Discriminated Union으로 타입 안정성 강화",
+      "useDiary, usePageTitle 커스텀 훅으로 관심사 분리 및 중복 제거",
+      "id 중복 방지를 위한 useRef 기반 시퀀스 관리",
+    ],
+    detailedTechStack:
+      "React 19.2.0, TypeScript 5.9.3, React Router DOM, Vite 7.2.4",
+    projectType: "개인 프로젝트",
+    period: "2025. 11. ~ 2025. 11.",
+    githubUrl: "https://github.com/sample-user/team-collab",
+    liveUrl: "https://team-collab.vercel.app",
+    techStack: ["React", "TypeScript", " React Router", "Vite"],
+    thumbnailSrc: "/projects/emotiondiary.webp",
+    thumbnailAlt: "emotionDiary 프로젝트 썸네일",
+  },
+  {
+    id: 4,
+    title: "틱택토 (Tic-Tac-Toe)",
+    description: "리액트 자습서 틱택토를 참조하여 다른 방식으로 구현",
+    detailedDescription:
+      "React 자습서의 틱택토를 그대로 복제하지 않고 데이터 구조와 상태 파생 방식을 바꿔 재구현한 프로젝트입니다. 단일 소스 기반으로 게임 상태 일관성을 유지하는 데 집중했습니다.",
+    highlights: [
+      "턴 데이터를 객체 배열로 설계해 보드 상태를 파생(derive) 방식으로 계산",
+      "checkWinner, getCurrentPlayer를 순수 함수로 분리해 테스트 용이성 확보",
+      "히스토리 분기 처리(slice)로 타임트래블 이후 재진행 시 일관성 보장",
+    ],
+    detailedTechStack: "React 19.2.0, JavaScript (ES6+), Vite 7.2.4",
+    projectType: "개인 프로젝트",
+    period: "2025. 11. ~ 2025. 11.",
+    githubUrl: "https://github.com/guiyoung2/tic-tac-toe",
+    liveUrl: "https://tic-tac-toe-delta-henna-68.vercel.app/",
+    techStack: ["React", "JavaScript", "Vite"],
+    thumbnailSrc: "/projects/tic-tac-toe.webp",
+    thumbnailAlt: "틱택토 (Tic-Tac-Toe) 프로젝트 썸네일",
+  },
+  {
+    id: 5,
+    title: "과거 프로젝트 모음 1",
+    description: "과거 취업을 위한 작업물들의 모음입니다",
+    detailedDescription:
+      "초기 프론트엔드 학습 시기 작업물을 정리한 프로젝트 모음으로, 다양한 UI 구현 실험을 포함합니다.",
+    highlights: [],
+    detailedTechStack: "HTML, CSS, JavaScript, React, jQuery",
+    projectType: "개인 프로젝트",
+    period: "2023. 05. ~ 2023. 08.",
+    githubUrl: "https://github.com/guiyoung2/Project_group",
+    liveUrl: "https://guiyoung2.github.io/portFolio/",
+    techStack: ["HTML", "CSS", "JavaScript", "React", "jQuery"],
+    thumbnailSrc: "/projects/projectgroup1.webp",
+    thumbnailAlt: "과거 포트폴리오 1 프로젝트 썸네일",
+  },
+  {
+    id: 6,
+    title: "과거 프로젝트 모음 2",
+    description: "과거 취업을 위한 작업물들의 모음입니다",
+    detailedDescription:
+      "이전 작업물의 확장 버전으로, UI 구성 다양화와 구현 속도 개선을 목표로 진행한 모음 프로젝트입니다.",
+    highlights: [],
+    detailedTechStack: "HTML, CSS, JavaScript, React, jQuery",
+    projectType: "개인 프로젝트",
+    period: "2023. 09. ~ 2023. 12.",
+    githubUrl: "https://github.com/guiyoung2/Project_group_2",
+    liveUrl: "https://guiyoung2.github.io/portFolio2/",
+    techStack: ["HTML", "CSS", "JavaScript", "React", "jQuery"],
+    thumbnailSrc: "/projects/projectgroup2.webp",
+    thumbnailAlt: "과거 포트폴리오 2 프로젝트 썸네일",
+  },
+];

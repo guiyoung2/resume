@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# cursor
+.cursor
+
+# agents
+AGENTS.md
+
 # debug
 npm-debug.log*
 yarn-debug.log*
