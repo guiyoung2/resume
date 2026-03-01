@@ -26,7 +26,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <HeroSection>
+    <HeroSection id="intro">
       <IntroOverlay $toBackground={introDone}>
         <IntroWord $toBackground={introDone}>Front-End</IntroWord>
       </IntroOverlay>

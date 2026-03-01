@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import EmotionRegistry from "@/components/providers/EmotionRegistry";
+import Header from "@/components/header/Header";
 import "./globals.css";
 
 const paperlogy = localFont({
@@ -32,7 +33,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={paperlogy.variable}>
-        <EmotionRegistry>{children}</EmotionRegistry>
+        <EmotionRegistry>
+          <Header />
+          {children}
+        </EmotionRegistry>
       </body>
     </html>
   );
