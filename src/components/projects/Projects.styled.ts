@@ -27,6 +27,12 @@ export const ProjectsTitle = styled.h2`
   margin-bottom: 0.65rem;
 `;
 
+export const GroupTitle = styled.h3`
+  font-size: 1.05rem;
+  color: #7c2d12;
+  margin: 1.15rem 0 0.85rem;
+`;
+
 export const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -250,6 +256,12 @@ export const HighlightItem = styled.li`
     border-radius: 999px;
     background: #f472b6;
   }
+`;
+
+export const HighlightLabel = styled.strong`
+  color: #9d174d;
+  font-weight: 700;
+  margin-right: 0.2rem;
 `;
 
 export const ModalLinkGroup = styled.div`

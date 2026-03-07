@@ -8,6 +8,7 @@ import {
   ProjectsContainer,
   SectionLabel,
   ProjectsTitle,
+  GroupTitle,
   ProjectsGrid,
   ProjectCard,
   ThumbnailFrame,
@@ -30,6 +31,7 @@ import {
   BlockTitle,
   HighlightList,
   HighlightItem,
+  HighlightLabel,
   ModalLinkGroup,
 } from "./Projects.styled";
 
@@ -58,6 +60,63 @@ function ExternalLinkIcon() {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null,
+  );
+  const featuredProjects = projects.slice(0, 3);
+  const archiveProjects = projects.slice(3);
+
+  const renderProjectCard = (project: ProjectItem) => (
+    <ProjectCard
+      key={project.id}
+      onClick={() => setSelectedProject(project)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setSelectedProject(project);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`${project.title} 상세보기`}
+    >
+      <ThumbnailFrame>
+        <Image
+          src={project.thumbnailSrc}
+          alt={project.thumbnailAlt}
+          fill
+          sizes="(max-width: 860px) 100vw, 50vw"
+          style={{ objectFit: "cover" }}
+        />
+      </ThumbnailFrame>
+      <CardHead>
+        <CardTitle>{project.title}</CardTitle>
+        <IconLinks>
+          <IconLink
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={`${project.title} GitHub`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <GitHubIcon />
+          </IconLink>
+          <IconLink
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={`${project.title} Live Site`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <ExternalLinkIcon />
+          </IconLink>
+        </IconLinks>
+      </CardHead>
+      <CardDescription>{project.description}</CardDescription>
+      <TagList>
+        {project.techStack.map((tech) => (
+          <Tag key={`${project.id}-${tech}`}>{tech}</Tag>
+        ))}
+      </TagList>
+    </ProjectCard>
   );
 
   useEffect(() => {
@@ -88,62 +147,11 @@ export default function Projects() {
         <SectionLabel>Projects</SectionLabel>
         <ProjectsTitle>프로젝트 목록</ProjectsTitle>
 
-        <ProjectsGrid>
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  setSelectedProject(project);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`${project.title} 상세보기`}
-            >
-              <ThumbnailFrame>
-                <Image
-                  src={project.thumbnailSrc}
-                  alt={project.thumbnailAlt}
-                  fill
-                  sizes="(max-width: 860px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
-                />
-              </ThumbnailFrame>
-              <CardHead>
-                <CardTitle>{project.title}</CardTitle>
-                <IconLinks>
-                  <IconLink
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={`${project.title} GitHub`}
-                    onClick={(event) => event.stopPropagation()}
-                  >
-                    <GitHubIcon />
-                  </IconLink>
-                  <IconLink
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={`${project.title} Live Site`}
-                    onClick={(event) => event.stopPropagation()}
-                  >
-                    <ExternalLinkIcon />
-                  </IconLink>
-                </IconLinks>
-              </CardHead>
-              <CardDescription>{project.description}</CardDescription>
-              <TagList>
-                {project.techStack.map((tech) => (
-                  <Tag key={`${project.id}-${tech}`}>{tech}</Tag>
-                ))}
-              </TagList>
-            </ProjectCard>
-          ))}
-        </ProjectsGrid>
+        <GroupTitle>대표 프로젝트</GroupTitle>
+        <ProjectsGrid>{featuredProjects.map(renderProjectCard)}</ProjectsGrid>
+
+        <GroupTitle>아카이브 프로젝트</GroupTitle>
+        <ProjectsGrid>{archiveProjects.map(renderProjectCard)}</ProjectsGrid>
       </ProjectsContainer>
 
       {selectedProject ? (
@@ -190,9 +198,21 @@ export default function Projects() {
               <>
                 <BlockTitle>기술적 특징</BlockTitle>
                 <HighlightList>
-                  {selectedProject.highlights.map((item) => (
-                    <HighlightItem key={item}>{item}</HighlightItem>
-                  ))}
+                  {selectedProject.highlights.map((item) => {
+                    const [label, ...rest] = item.split(":");
+                    const content = rest.join(":").trim();
+
+                    if (!content) {
+                      return <HighlightItem key={item}>{item}</HighlightItem>;
+                    }
+
+                    return (
+                      <HighlightItem key={item}>
+                        <HighlightLabel>{label}:</HighlightLabel>
+                        {content}
+                      </HighlightItem>
+                    );
+                  })}
                 </HighlightList>
               </>
             ) : null}

@@ -5,15 +5,13 @@ export const projects: ProjectItem[] = [
     id: 1,
     title: "VibeBoard",
     description:
-      "보드게임 추천·후기 작성·주변 보드게임 카페 검색을 제공하는 웹 서비스",
+      "Supabase 기반 데이터 조회와 인증, React Query/Zustand 상태 관리를 통합한 웹 프로젝트입니다.",
     detailedDescription:
-      "Supabase와 카카오 API를 연동해 보드게임 추천, 리뷰, 카페 검색을 하나의 서비스 흐름으로 통합한 프로젝트입니다. 데이터 요청/캐싱 전략과 번들 최적화를 함께 적용해 사용자 체감 성능을 개선했습니다.",
+      "Supabase를 통해 서버 데이터 조회와 사용자 인증을 구성하고, React Query로 서버 상태를, Zustand로 클라이언트 상태를 분리해 관리한 프로젝트입니다. 로그인부터 리뷰 작성, 카페 검색까지 하나의 사용자 흐름으로 연결해 서비스 완성도를 높였습니다.",
     highlights: [
-      "React Query 기반 서버 상태 관리로 캐싱/리페칭/invalidateQueries 흐름 최적화",
-      "Lighthouse 성능 점수 47 → 91 개선 (LCP 44.3s → 6.0s, CLS 0.362 → 0, payload 8.4MB → 968KB)",
-      "Vite transformIndexHtml 플러그인으로 LCP 이미지 preload 자동 주입",
-      "Zustand로 인증/테마 상태 관리, initTheme로 FOUC 방지",
-      "Supabase RLS 기반 권한 제어 및 카카오맵 SDK 지연 로딩 적용",
+      "문제: 데이터 조회, 인증, 전역 상태가 분산되어 기능 간 흐름을 일관되게 유지하기 어려웠습니다.",
+      "해결: Supabase(Auth/DB)와 React Query(서버 상태), Zustand(클라이언트 상태)를 역할별로 분리해 설계했습니다.",
+      "결과: 로그인·리뷰·카페 검색 흐름을 안정적으로 연결했고 Lighthouse 점수를 47 → 91로 개선했습니다.",
     ],
     detailedTechStack:
       "React 19.2.0, TypeScript 5.9.3, React Query 5.90.12, Zustand 5.0.9, React Router DOM 7.11.0, Vite 7.2.4, Tailwind CSS 4.1.18, Supabase, 카카오 로컬 API, 카카오맵 JavaScript SDK, Vercel",
@@ -35,15 +33,13 @@ export const projects: ProjectItem[] = [
   {
     id: 2,
     title: "리뷰 블로그 (LogOfReview)",
-    description: "리뷰들을 작성하고 조회하는 블로그",
+    description: "리뷰를 작성하고 조회할 수 있는 블로그 프로젝트입니다.",
     detailedDescription:
-      "리뷰 작성/조회/댓글 기능을 중심으로 구성한 블로그 프로젝트입니다. 서버 상태 관리, 인증 상태 영속화, 환경별 데이터 전략을 분리해 배포 안정성과 유지보수성을 높였습니다.",
+      "리뷰 작성/조회/댓글 기능을 중심으로 구성한 블로그 프로젝트입니다. 서버 상태 관리, 인증 상태 영속화, 환경별 데이터 전략 분리를 통해 배포 안정성과 유지보수성을 강화한 프로젝트입니다.",
     highlights: [
-      "React Query queryKey 설계로 카테고리/검색어/정렬 변경 시 자동 재요청",
-      "댓글 CRUD 후 invalidateQueries로 목록 즉시 동기화",
-      "Zustand + persist로 로그인 상태 영속화, Axios 인터셉터로 JWT 자동 주입",
-      "개발/배포 환경별 데이터 전략 분리(JSON Server / 정적 JSON)",
-      "useMemo/useCallback으로 상세 페이지 렌더링 최적화",
+      "문제: 검색/정렬/댓글 변경이 많은 화면에서 데이터 동기화와 인증 상태 유지를 안정적으로 관리해야 했습니다.",
+      "해결: React Query queryKey 설계와 invalidateQueries를 적용하고, Zustand persist와 Axios 인터셉터로 인증 흐름을 통합했습니다.",
+      "결과: 조건 변경 시 재요청과 댓글 갱신이 즉시 반영되고, 배포 환경에서 테스트 데이터 누적을 방지했습니다.",
     ],
     detailedTechStack:
       "React 19.2.0, TypeScript 5.9.3, React Query 5.90.11, Zustand 5.0.9, Axios, Styled Components, React Router DOM, Vercel",
@@ -64,35 +60,35 @@ export const projects: ProjectItem[] = [
   {
     id: 3,
     title: "emotionDiary",
-    description: " 투두리스트 형식처럼 하루 감정을 기록하는 프로젝트입니다",
+    description: "투두리스트 형식처럼 하루 감정을 기록하는 프로젝트입니다.",
     detailedDescription:
-      "하루 감정을 기록/수정/삭제하는 흐름을 중심으로 구현한 웹앱입니다. 상태 관리의 명확한 경계를 목표로 Context 분리, reducer 설계, localStorage 동기화를 체계적으로 적용했습니다.",
+      "하루 감정을 기록/수정/삭제하는 흐름을 중심으로 구현한 웹앱 프로젝트입니다. 상태 관리의 명확한 경계를 목표로 Context 분리, reducer 설계, localStorage 동기화를 체계적으로 적용한 프로젝트입니다.",
     highlights: [
-      "Context API + useReducer로 전역 상태 관리 및 영속화 통합 처리",
-      "INIT/CREATE/UPDATE/DELETE Discriminated Union으로 타입 안정성 강화",
-      "useDiary, usePageTitle 커스텀 훅으로 관심사 분리 및 중복 제거",
-      "id 중복 방지를 위한 useRef 기반 시퀀스 관리",
+      "문제: 일기 CRUD와 localStorage 영속화를 함께 처리하면서 상태 일관성과 타입 안정성을 유지해야 했습니다.",
+      "해결: Context API와 useReducer를 분리하고 Discriminated Union 및 커스텀 훅으로 책임을 명확히 나눴습니다.",
+      "결과: 새로고침 이후에도 안정적으로 데이터가 복원되고, 중복 코드와 id 충돌 가능성을 줄였습니다.",
     ],
     detailedTechStack:
       "React 19.2.0, TypeScript 5.9.3, React Router DOM, Vite 7.2.4",
     projectType: "개인 프로젝트",
     period: "2025. 11. ~ 2025. 11.",
-    githubUrl: "https://github.com/sample-user/team-collab",
-    liveUrl: "https://team-collab.vercel.app",
-    techStack: ["React", "TypeScript", " React Router", "Vite"],
+    githubUrl: "https://github.com/guiyoung2/emotionDiary",
+    liveUrl: "https://emotiondiary-pi.vercel.app/",
+    techStack: ["React", "TypeScript", "React Router", "Vite"],
     thumbnailSrc: "/projects/emotiondiary.webp",
     thumbnailAlt: "emotionDiary 프로젝트 썸네일",
   },
   {
     id: 4,
     title: "틱택토 (Tic-Tac-Toe)",
-    description: "리액트 자습서 틱택토를 참조하여 다른 방식으로 구현",
+    description:
+      "리액트 자습서 틱택토를 참조해 다른 방식으로 재구현한 프로젝트입니다.",
     detailedDescription:
-      "React 자습서의 틱택토를 그대로 복제하지 않고 데이터 구조와 상태 파생 방식을 바꿔 재구현한 프로젝트입니다. 단일 소스 기반으로 게임 상태 일관성을 유지하는 데 집중했습니다.",
+      "React 자습서의 틱택토를 그대로 복제하지 않고 데이터 구조와 상태 파생 방식을 바꿔 재구현한 프로젝트입니다. 단일 소스 기반으로 게임 상태 일관성을 유지하도록 설계한 프로젝트입니다.",
     highlights: [
-      "턴 데이터를 객체 배열로 설계해 보드 상태를 파생(derive) 방식으로 계산",
-      "checkWinner, getCurrentPlayer를 순수 함수로 분리해 테스트 용이성 확보",
-      "히스토리 분기 처리(slice)로 타임트래블 이후 재진행 시 일관성 보장",
+      "문제: 보드 상태와 턴 히스토리를 동시에 관리하면 시점 이동 후 상태 불일치가 발생하기 쉬웠습니다.",
+      "해결: 턴 데이터를 단일 소스로 두고 보드를 파생 계산했으며, 승리/현재 플레이어 로직을 순수 함수로 분리했습니다.",
+      "결과: 타임트래블 이후 재진행 시에도 히스토리 분기가 안정적으로 동작하며 게임 상태 일관성을 유지했습니다.",
     ],
     detailedTechStack: "React 19.2.0, JavaScript (ES6+), Vite 7.2.4",
     projectType: "개인 프로젝트",
@@ -105,10 +101,11 @@ export const projects: ProjectItem[] = [
   },
   {
     id: 5,
-    title: "과거 프로젝트 모음 1",
-    description: "과거 취업을 위한 작업물들의 모음입니다",
+    title: "Early Works 1",
+    description:
+      "초기 프론트엔드 학습 시기 작업물을 정리한 아카이브 프로젝트입니다.",
     detailedDescription:
-      "초기 프론트엔드 학습 시기 작업물을 정리한 프로젝트 모음으로, 다양한 UI 구현 실험을 포함합니다.",
+      "초기 프론트엔드 학습 시기 작업물을 정리한 아카이브 프로젝트입니다. 다양한 UI 구현 실험을 통해 기본기를 확장한 프로젝트입니다.",
     highlights: [],
     detailedTechStack: "HTML, CSS, JavaScript, React, jQuery",
     projectType: "개인 프로젝트",
@@ -121,10 +118,11 @@ export const projects: ProjectItem[] = [
   },
   {
     id: 6,
-    title: "과거 프로젝트 모음 2",
-    description: "과거 취업을 위한 작업물들의 모음입니다",
+    title: "Early Works 2",
+    description:
+      "초기 프론트엔드 학습 시기 작업물의 확장 버전을 정리한 아카이브 프로젝트입니다.",
     detailedDescription:
-      "이전 작업물의 확장 버전으로, UI 구성 다양화와 구현 속도 개선을 목표로 진행한 모음 프로젝트입니다.",
+      "이전 작업물의 확장 버전을 정리한 아카이브 프로젝트입니다. UI 구성 다양화와 구현 속도 개선을 목표로 진행한 프로젝트입니다.",
     highlights: [],
     detailedTechStack: "HTML, CSS, JavaScript, React, jQuery",
     projectType: "개인 프로젝트",
