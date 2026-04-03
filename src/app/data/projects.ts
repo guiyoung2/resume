@@ -2,6 +2,39 @@ import type { ProjectItem } from "@/app/types/project";
 
 export const projects: ProjectItem[] = [
   {
+    id: 7,
+    title: "Notion Blog",
+    description:
+      "Notion을 CMS로 활용해 태그 필터링·무한 스크롤·동적 SEO를 제공하는 개인 개발 블로그입니다.",
+    detailedDescription:
+      "Notion을 CMS처럼 활용해 기술 글을 발행하고, 태그 필터링·무한 스크롤·동적 SEO를 제공하는 개인 개발 블로그입니다. 별도의 관리자 페이지 없이 Notion에서 콘텐츠를 관리하고, 서비스에서는 이를 블로그 UI와 탐색 경험에 맞게 가공해 보여주도록 구현했습니다.",
+    highlights: [
+      "CMS 연동: Notion API를 CMS처럼 연동해 별도 관리자 페이지 없이 포스트 발행 및 콘텐츠 관리 구조 구현",
+      "캐싱 전략: unstable_cache와 캐시 태그 갱신 전략을 적용해 반복 조회 시 Notion API 호출 비용을 줄이고 목록 응답 안정성 개선",
+      "무한 스크롤: TanStack Query useInfiniteQuery 기반 무한 스크롤을 구현해 포스트 탐색 경험 개선",
+      "MDX 렌더링: rehype-pretty-code를 적용해 코드 포함 기술 글 가독성 강화",
+      "TOC: 헤딩 기반 TOC 자동 추출로 모바일/데스크톱 반응형 목차 UI를 구성해 긴 글 탐색성 개선",
+      "SEO: generateMetadata와 동적 OG 이미지 생성으로 포스트 단위 SEO 및 공유 미리보기 품질 개선",
+      "다크 모드: 다크 모드 지원으로 블로그 운영 기능 확장",
+    ],
+    detailedTechStack:
+      "Next.js 16, React 19, TypeScript, TanStack Query 5, Notion API, MDX, Tailwind CSS 4, shadcn/ui, Giscus, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2026. 03. ~ 2026. 04.",
+    githubUrl: "https://github.com/guiyoung2/notion-blog",
+    liveUrl: "https://notion-blog-rose-phi.vercel.app",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "TanStack Query",
+      "Notion API",
+      "Tailwind CSS",
+      "MDX",
+    ],
+    thumbnailSrc: "/projects/notionBlog.webp",
+    thumbnailAlt: "Notion Blog 프로젝트 썸네일",
+  },
+  {
     id: 1,
     title: "VibeBoard",
     description:
