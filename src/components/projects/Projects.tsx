@@ -8,7 +8,6 @@ import {
   ProjectsContainer,
   SectionLabel,
   ProjectsTitle,
-  GroupTitle,
   ProjectsGrid,
   ProjectCard,
   ThumbnailFrame,
@@ -61,8 +60,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null,
   );
-  const featuredProjects = projects.slice(0, 3);
-  const archiveProjects = projects.slice(3);
+  
 
   const renderProjectCard = (project: ProjectItem) => (
     <ProjectCard
@@ -147,11 +145,7 @@ export default function Projects() {
         <SectionLabel>Projects</SectionLabel>
         <ProjectsTitle>프로젝트 목록</ProjectsTitle>
 
-        <GroupTitle>대표 프로젝트</GroupTitle>
-        <ProjectsGrid>{featuredProjects.map(renderProjectCard)}</ProjectsGrid>
-
-        <GroupTitle>아카이브 프로젝트</GroupTitle>
-        <ProjectsGrid>{archiveProjects.map(renderProjectCard)}</ProjectsGrid>
+        <ProjectsGrid>{projects.map(renderProjectCard)}</ProjectsGrid>
       </ProjectsContainer>
 
       {selectedProject ? (

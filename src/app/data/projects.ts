@@ -2,6 +2,37 @@ import type { ProjectItem } from "@/app/types/project";
 
 export const projects: ProjectItem[] = [
   {
+    id: 8,
+    title: "GeminiChat",
+    description:
+      "Google Gemini API 기반 실시간 AI 채팅과 구독 결제를 통합한 SaaS 서비스입니다.",
+    detailedDescription:
+      "Google Gemini API를 기반으로 실시간 AI 채팅과 구독 결제를 통합한 SaaS 서비스입니다. 단순 채팅 기능을 넘어 '가입 → 무료 플랜 시작 → 한도 도달 → 업그레이드 유도 → 결제 → 기능 해제'로 이어지는 SaaS 비즈니스 흐름 전체를 직접 설계하고 구현했습니다. 결제 완료 신호는 Webhook으로 서버 간 처리하고, 사용량 차감은 AI 응답 성공 후에만 기록하는 등 실제 서비스 수준의 안정성을 고려해 구현했습니다.",
+    highlights: [
+      "AI 스트리밍: ReadableStream으로 Gemini 응답을 청크 단위 전달, 스트리밍 중 임시 ID 관리 후 DB 저장 완료 시 실제 ID로 교체",
+      "사용량 제어: 한도 선체크 → Gemini 호출 성공 후에만 카운트 기록, API 실패 시 차감되지 않도록 처리",
+      "결제 연동: Polar Webhook 서명 검증(validateEvent) 후 구독 상태 자동 갱신, 검증 실패 시 403 반환으로 위조 요청 차단",
+      "보안: Supabase RLS로 사용자별 데이터 격리, 사용자 IP를 AES-256-GCM으로 암호화 후 DB 저장",
+      "대화 문맥: 이전 메시지를 Gemini history 파라미터로 주입해 멀티턴 대화 지원, 날짜별 사이드바 그룹핑(오늘 / 어제 / 이번 주)",
+    ],
+    detailedTechStack:
+      "Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Supabase (Auth/PostgreSQL/RLS), Google Gemini API, Polar, Framer Motion, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2026. 04. ~ 2026. 04.",
+    githubUrl: "https://github.com/guiyoung2/gemini-chat",
+    liveUrl: "https://gemini-gy-ruby.vercel.app/",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Gemini API",
+      "Tailwind CSS",
+      "Polar",
+    ],
+    thumbnailSrc: "/projects/geminiChat.webp",
+    thumbnailAlt: "GeminiChat 프로젝트 썸네일",
+  },
+  {
     id: 7,
     title: "Notion Blog",
     description:
@@ -89,81 +120,5 @@ export const projects: ProjectItem[] = [
     ],
     thumbnailSrc: "/projects/logofreview.webp",
     thumbnailAlt: "리뷰 블로그 (LogOfReview) 프로젝트 썸네일",
-  },
-  {
-    id: 3,
-    title: "emotionDiary",
-    description: "투두리스트 형식처럼 하루 감정을 기록하는 프로젝트입니다.",
-    detailedDescription:
-      "하루 감정을 기록/수정/삭제하는 흐름을 중심으로 구현한 웹앱 프로젝트입니다. 상태 관리의 명확한 경계를 목표로 Context 분리, reducer 설계, localStorage 동기화를 체계적으로 적용한 프로젝트입니다.",
-    highlights: [
-      "문제: 일기 CRUD와 localStorage 영속화를 함께 처리하면서 상태 일관성과 타입 안정성을 유지해야 했습니다.",
-      "해결: Context API와 useReducer를 분리하고 Discriminated Union 및 커스텀 훅으로 책임을 명확히 나눴습니다.",
-      "결과: 새로고침 이후에도 안정적으로 데이터가 복원되고, 중복 코드와 id 충돌 가능성을 줄였습니다.",
-    ],
-    detailedTechStack:
-      "React 19.2.0, TypeScript 5.9.3, React Router DOM, Vite 7.2.4",
-    projectType: "개인 프로젝트",
-    period: "2025. 11. ~ 2025. 11.",
-    githubUrl: "https://github.com/guiyoung2/emotionDiary",
-    liveUrl: "https://emotiondiary-pi.vercel.app/",
-    techStack: ["React", "TypeScript", "React Router", "Vite"],
-    thumbnailSrc: "/projects/emotiondiary.webp",
-    thumbnailAlt: "emotionDiary 프로젝트 썸네일",
-  },
-  {
-    id: 4,
-    title: "틱택토 (Tic-Tac-Toe)",
-    description:
-      "리액트 자습서 틱택토를 참조해 다른 방식으로 재구현한 프로젝트입니다.",
-    detailedDescription:
-      "React 자습서의 틱택토를 그대로 복제하지 않고 데이터 구조와 상태 파생 방식을 바꿔 재구현한 프로젝트입니다. 단일 소스 기반으로 게임 상태 일관성을 유지하도록 설계한 프로젝트입니다.",
-    highlights: [
-      "문제: 보드 상태와 턴 히스토리를 동시에 관리하면 시점 이동 후 상태 불일치가 발생하기 쉬웠습니다.",
-      "해결: 턴 데이터를 단일 소스로 두고 보드를 파생 계산했으며, 승리/현재 플레이어 로직을 순수 함수로 분리했습니다.",
-      "결과: 타임트래블 이후 재진행 시에도 히스토리 분기가 안정적으로 동작하며 게임 상태 일관성을 유지했습니다.",
-    ],
-    detailedTechStack: "React 19.2.0, JavaScript (ES6+), Vite 7.2.4",
-    projectType: "개인 프로젝트",
-    period: "2025. 11. ~ 2025. 11.",
-    githubUrl: "https://github.com/guiyoung2/tic-tac-toe",
-    liveUrl: "https://tic-tac-toe-delta-henna-68.vercel.app/",
-    techStack: ["React", "JavaScript", "Vite"],
-    thumbnailSrc: "/projects/tic-tac-toe.webp",
-    thumbnailAlt: "틱택토 (Tic-Tac-Toe) 프로젝트 썸네일",
-  },
-  {
-    id: 5,
-    title: "Early Works 1",
-    description:
-      "초기 프론트엔드 학습 시기 작업물을 정리한 아카이브 프로젝트입니다.",
-    detailedDescription:
-      "초기 프론트엔드 학습 시기 작업물을 정리한 아카이브 프로젝트입니다. 다양한 UI 구현 실험을 통해 기본기를 확장한 프로젝트입니다.",
-    highlights: [],
-    detailedTechStack: "HTML, CSS, JavaScript, React, jQuery",
-    projectType: "개인 프로젝트",
-    period: "2023. 05. ~ 2023. 08.",
-    githubUrl: "https://github.com/guiyoung2/Project_group",
-    liveUrl: "https://guiyoung2.github.io/portFolio/",
-    techStack: ["HTML", "CSS", "JavaScript", "React", "jQuery"],
-    thumbnailSrc: "/projects/projectgroup1.webp",
-    thumbnailAlt: "과거 포트폴리오 1 프로젝트 썸네일",
-  },
-  {
-    id: 6,
-    title: "Early Works 2",
-    description:
-      "초기 프론트엔드 학습 시기 작업물의 확장 버전을 정리한 아카이브 프로젝트입니다.",
-    detailedDescription:
-      "이전 작업물의 확장 버전을 정리한 아카이브 프로젝트입니다. UI 구성 다양화와 구현 속도 개선을 목표로 진행한 프로젝트입니다.",
-    highlights: [],
-    detailedTechStack: "HTML, CSS, JavaScript, React, jQuery",
-    projectType: "개인 프로젝트",
-    period: "2023. 09. ~ 2023. 12.",
-    githubUrl: "https://github.com/guiyoung2/Project_group_2",
-    liveUrl: "https://guiyoung2.github.io/portFolio2/",
-    techStack: ["HTML", "CSS", "JavaScript", "React", "jQuery"],
-    thumbnailSrc: "/projects/projectgroup2.webp",
-    thumbnailAlt: "과거 포트폴리오 2 프로젝트 썸네일",
   },
 ];
