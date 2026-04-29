@@ -1,51 +1,48 @@
 'use client'
-import { useEffect, useState } from 'react'
+
 import {
   HeroSection,
-  IntroOverlay,
-  IntroWord,
-  BackgroundAurora,
-  BackgroundPattern,
-  BgOrb,
-  GlassCard,
-  HeroGreeting,
+  HeroInner,
+  HeroBadge,
   HeroTitle,
-  HeroTitleLine,
-  HeroNameHighlight,
+  HeroNameAccent,
+  HeroSubtitle,
+  HeroButtons,
+  HeroPrimaryLink,
+  HeroOutlineButton,
 } from './Hero.styled'
 
 export default function Hero() {
-  const [introDone, setIntroDone] = useState(false)
-
-  useEffect(() => {
-    const timerId = window.setTimeout(() => {
-      setIntroDone(true)
-    }, 1000)
-
-    return () => window.clearTimeout(timerId)
-  }, [])
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <HeroSection id="intro">
-      <IntroOverlay $toBackground={introDone}>
-        <IntroWord $toBackground={introDone}>Front-End</IntroWord>
-      </IntroOverlay>
-      <BackgroundAurora />
-      <BackgroundPattern />
-      <BgOrb $color="#fbcfe8" $size={400} $top="-80px" $left="-100px" />
-      <BgOrb $color="#bfdbfe" $size={300} $bottom="-60px" $right="-80px" />
-
-      {introDone ? (
-        <GlassCard>
-          <HeroGreeting>안녕하세요,</HeroGreeting>
-          <HeroTitle>
-            <HeroTitleLine $delay="0.45s">변화에 적응해가는 프론트엔드 개발자</HeroTitleLine>
-            <HeroTitleLine $delay="0.62s">
-              <HeroNameHighlight>김귀영</HeroNameHighlight>입니다 :)
-            </HeroTitleLine>
-          </HeroTitle>
-        </GlassCard>
-      ) : null}
+      <HeroInner>
+        <HeroBadge>Frontend Developer</HeroBadge>
+        <HeroTitle>
+          안녕하세요,
+          <br />
+          <HeroNameAccent>김귀영</HeroNameAccent>입니다
+        </HeroTitle>
+        <HeroSubtitle>
+          비즈니스 요구사항을 기술적 가치로 전환하는 개발자
+        </HeroSubtitle>
+        <HeroButtons>
+          <HeroPrimaryLink
+            href="https://github.com/guiyoung2"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="GitHub 프로필 바로가기"
+          >
+            GitHub ↗
+          </HeroPrimaryLink>
+          <HeroOutlineButton type="button" onClick={scrollToContact}>
+            연락하기
+          </HeroOutlineButton>
+        </HeroButtons>
+      </HeroInner>
     </HeroSection>
   )
 }

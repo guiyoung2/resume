@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 
 export const ProjectsSection = styled.section`
   position: relative;
-  padding: 6.5rem 1.25rem 7rem;
-  background: linear-gradient(180deg, #fff7ed 0%, #fffbeb 100%);
+  padding: 6rem 1.25rem;
+  background: #f8fafc;
 `;
 
 export const ProjectsContainer = styled.div`
@@ -13,24 +13,26 @@ export const ProjectsContainer = styled.div`
 `;
 
 export const SectionLabel = styled.p`
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #9f1239;
-  margin-bottom: 0.85rem;
+  color: #4f46e5;
+  margin-bottom: 0.75rem;
   font-weight: 700;
 `;
 
 export const ProjectsTitle = styled.h2`
-  font-size: clamp(1.45rem, 2.3vw, 2rem);
-  color: #1e1b4b;
-  margin-bottom: 0.65rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #0f172a;
+  font-weight: 700;
+  margin-bottom: 2rem;
 `;
 
 export const GroupTitle = styled.h3`
-  font-size: 1.05rem;
-  color: #7c2d12;
-  margin: 1.15rem 0 0.85rem;
+  font-size: 1rem;
+  color: #0f172a;
+  font-weight: 700;
+  margin: 1.25rem 0 0.875rem;
 `;
 
 export const ProjectsGrid = styled.div`
@@ -48,21 +50,21 @@ export const ProjectsGrid = styled.div`
 `;
 
 export const ProjectCard = styled.article`
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 1);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 10px 24px rgba(136, 19, 55, 0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
   cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 30px rgba(136, 19, 55, 0.12);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.1);
+    border-color: #c7d2fe;
   }
 `;
 
@@ -71,7 +73,7 @@ export const ThumbnailFrame = styled.div`
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-radius: 0.9rem;
+  border-radius: 0.75rem;
   border: 1px solid #e2e8f0;
   background: #f8fafc;
   margin-bottom: 0.95rem;
@@ -86,8 +88,9 @@ export const CardHead = styled.div`
 `;
 
 export const CardTitle = styled.h3`
-  color: #1e1b4b;
-  font-size: 1.12rem;
+  color: #0f172a;
+  font-size: 1.0625rem;
+  font-weight: 700;
 `;
 
 export const IconLinks = styled.div`
@@ -99,25 +102,25 @@ export const IconLinks = styled.div`
 export const IconLink = styled.a`
   width: 2rem;
   height: 2rem;
-  border-radius: 0.6rem;
+  border-radius: 0.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #e2e8f0;
-  color: #334155;
-  background: rgba(255, 255, 255, 0.8);
+  color: #64748b;
+  background: #ffffff;
   transition: all 0.2s ease;
 
   &:hover {
-    color: #881337;
-    border-color: #fbcfe8;
-    background: #ffffff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+    background: #eef2ff;
   }
 `;
 
 export const CardDescription = styled.p`
-  color: #334155;
-  font-size: 0.95rem;
+  color: #475569;
+  font-size: 0.9375rem;
   line-height: 1.65;
   margin-bottom: 0.85rem;
   min-height: 2.8rem;
@@ -126,16 +129,17 @@ export const CardDescription = styled.p`
 export const TagList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.4rem;
 `;
 
 export const Tag = styled.li`
   border-radius: 999px;
-  padding: 0.28rem 0.62rem;
+  padding: 0.28rem 0.65rem;
   font-size: 0.78rem;
-  color: #4c1d95;
-  background: #f5f3ff;
-  border: 1px solid #ede9fe;
+  color: #4338ca;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  font-weight: 500;
 `;
 
 export const ModalOverlay = styled.div`
@@ -146,7 +150,7 @@ export const ModalOverlay = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: rgba(15, 23, 42, 0.45);
+  background: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 `;
@@ -155,11 +159,11 @@ export const ModalCard = styled.article`
   width: min(760px, 100%);
   max-height: 88vh;
   overflow: auto;
-  border-radius: 1.1rem;
-  padding: 1.25rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.18);
 `;
 
 export const ModalHeader = styled.div`
@@ -167,82 +171,87 @@ export const ModalHeader = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 `;
 
 export const ModalTitle = styled.h3`
-  color: #1e1b4b;
+  color: #0f172a;
   font-size: 1.25rem;
+  font-weight: 700;
 `;
 
 export const CloseButton = styled.button`
   width: 2rem;
   height: 2rem;
-  border-radius: 0.55rem;
+  border-radius: 0.5rem;
   border: 1px solid #e2e8f0;
   background: #ffffff;
-  color: #334155;
+  color: #64748b;
   font-size: 1.1rem;
   line-height: 1;
+  flex-shrink: 0;
 
   &:hover {
     background: #f8fafc;
+    color: #0f172a;
   }
 `;
 
 export const ModalDescription = styled.p`
-  color: #334155;
-  line-height: 1.75;
-  margin-bottom: 0.9rem;
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 1rem;
 `;
 
 export const ReadmeLink = styled.a`
   display: inline-block;
   margin-top: 0.35rem;
-  color: #be185d;
-  font-size: 0.87rem;
+  color: #4f46e5;
+  font-size: 0.875rem;
   text-decoration: underline;
   text-underline-offset: 2px;
   word-break: break-all;
   transition: color 0.2s ease;
 
   &:hover {
-    color: #9d174d;
+    color: #4338ca;
   }
 `;
 
 export const MetaRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem 0.8rem;
-  margin-bottom: 0.95rem;
+  gap: 0.45rem 0.75rem;
+  margin-bottom: 1rem;
 `;
 
 export const MetaItem = styled.span`
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: #475569;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 999px;
-  padding: 0.24rem 0.6rem;
+  padding: 0.24rem 0.65rem;
 `;
 
 export const BlockTitle = styled.h4`
-  font-size: 0.95rem;
-  color: #881337;
-  margin-bottom: 0.45rem;
+  font-size: 0.9375rem;
+  color: #4f46e5;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 `;
 
 export const HighlightList = styled.ul`
   display: grid;
   gap: 0.45rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 export const HighlightItem = styled.li`
-  color: #334155;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  color: #475569;
+  font-size: 0.9375rem;
+  line-height: 1.65;
   padding-left: 0.9rem;
   position: relative;
 
@@ -251,15 +260,15 @@ export const HighlightItem = styled.li`
     position: absolute;
     left: 0;
     top: 0.6rem;
-    width: 0.35rem;
-    height: 0.35rem;
+    width: 0.3rem;
+    height: 0.3rem;
     border-radius: 999px;
-    background: #f472b6;
+    background: #a5b4fc;
   }
 `;
 
 export const HighlightLabel = styled.strong`
-  color: #9d174d;
+  color: #4338ca;
   font-weight: 700;
   margin-right: 0.2rem;
 `;
@@ -267,5 +276,5 @@ export const HighlightLabel = styled.strong`
 export const ModalLinkGroup = styled.div`
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.2rem;
+  margin-top: 1rem;
 `;
