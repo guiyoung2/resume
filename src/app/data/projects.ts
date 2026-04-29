@@ -75,7 +75,7 @@ export const projects: ProjectItem[] = [
     highlights: [
       "문제: 데이터 조회, 인증, 전역 상태가 분산되어 기능 간 흐름을 일관되게 유지하기 어려웠습니다.",
       "해결: Supabase(Auth/DB)와 React Query(서버 상태), Zustand(클라이언트 상태)를 역할별로 분리해 설계했습니다.",
-      "결과: 로그인·리뷰·카페 검색 흐름을 안정적으로 연결했고 Lighthouse 점수를 47 → 91로 개선했습니다.",
+      "결과: 로그인·리뷰·카페 검색 흐름을 안정적으로 연결했고 LCP 44.3s → 6.0s 성능 개선.",
     ],
     detailedTechStack:
       "React 19.2.0, TypeScript 5.9.3, React Query 5.90.12, Zustand 5.0.9, React Router DOM 7.11.0, Vite 7.2.4, Tailwind CSS 4.1.18, Supabase, 카카오 로컬 API, 카카오맵 JavaScript SDK, Vercel",
