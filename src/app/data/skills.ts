@@ -15,6 +15,10 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     label: "Tools",
-    skills: ["Git", "Vite", "Vercel", "ESLint", "Claude"],
+    skills: ["Git", "Vite", "Vercel", "ESLint"],
+  },
+  {
+    label: "AI Tools",
+    skills: ["Claude Code", "Codex"],
   },
 ];
