@@ -12,12 +12,12 @@ export const workflowSteps: WorkflowStep[] = [
   {
     step: "②",
     title: "계획 수립",
-    description: "Claude Code로 단계별 구현 계획 작성. 파일·함수 단위 사전 설계.",
+    description: "Claude Code 및 Codex로 단계별 구현 계획 작성. 파일·함수 단위 사전 설계.",
   },
   {
     step: "③",
     title: "다중 검증",
-    description: "동일 계획을 Codex로 2차 검토. 한 모델이 놓친 부분을 다른 모델이 보완.",
+    description: "Claude Code 및 Codex 등 다른 에이전트 모델로 2차 검토. 한 모델이 놓친 부분을 다른 모델이 보완.",
   },
   {
     step: "④",
