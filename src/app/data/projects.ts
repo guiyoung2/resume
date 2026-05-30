@@ -2,6 +2,40 @@ import type { ProjectItem } from "@/app/types/project";
 
 export const projects: ProjectItem[] = [
   {
+    id: 9,
+    title: "Check Later",
+    description:
+      "\"나중에 봐야지\"를 실제로 다시 찾아보게 만드는, 모바일 홈 화면에 설치해 쓰는 개인용 북마크 PWA입니다.",
+    detailedDescription:
+      "영상·글·캡처·메모를 한곳에 모아 '형태(영상/글/캡처/메모)'와 '상태(안 봄/봤음/보관)' 두 축으로 필터링하는 개인용 북마크 PWA입니다. 흩어진 \"나중에 볼 것\"을 다시 찾지 못하는 불편을 해결하려고 직접 만들었고, 모바일 홈 화면에 앱처럼 설치한 뒤 유튜브·브라우저 공유 메뉴에서 1탭으로 저장해 쓰도록 설계했습니다(PC 웹에서도 동일하게 사용 가능). 직접 구축한 범용 harness_framework를 처음부터 적용·검증한 신규 프로젝트로, 40여 개 Step 단위로 구조화해 개발했습니다.",
+    highlights: [
+      "성능 측정(Lighthouse 모바일·배포 기준): Accessibility 100·Best Practices 100점, CLS 0.002·TBT 0ms로 레이아웃 안정성·메인 스레드 응답성 확보, 초기 전송량 JS 152.93 kB·CSS 7.77 kB(gzip). 단일 번들 CSR 구조에서 LCP 5.8s 확인 → 라우트 기반 코드 스플리팅을 개선 과제로 식별",
+      "API 호출 최적화: 한 항목에 이미지 N장 첨부 시 Signed URL 발급이 항목당 N×2회 발생하던 것을 createSignedUrls(paths[]) 배치 1회로 고정 — 10장 기준 20회 → 1회(약 95%↓), 이미지 수와 무관하게 네트워크 왕복 1회 유지",
+      "품질 게이트: 테스트 74개(16개 파일) 전수 통과·실패 0건, tsc --noEmit 타입 에러 0건, 디자인 토큰 하드코딩 색상 위반 0건 유지",
+      "중복 제거 리팩토링: 신규/수정 폼을 mode('create'|'edit') 기반 ItemForm 단일 컴포넌트로 통합해 중복 폼 블록 5곳·고아 상태 5개·함수 5개 정리",
+      "PWA 설치형 사용: 모바일 홈 화면에 앱처럼 설치하고 Web Share Target API로 유튜브·브라우저 공유 메뉴에서 1탭 저장 (vite-plugin-pwa로 SW·매니페스트 자동 생성, Lighthouse PWA 체크리스트 충족, PC 웹 동시 지원)",
+      "2축 분류 UX: 입력값 기반 자동 타입 판정(영상/글/캡처/메모) + 카드 스와이프 상태 전환(안 봄 → 봤음 → 보관); 타입 판정 우선순위(이미지>URL → URL>이미지)를 재설계해 'YouTube + 이미지 첨부' 케이스를 영상으로 정확 분류",
+      "보안: Supabase RLS로 모든 DB 접근에 user_id = auth.uid() 조건을 DB 레벨에서 강제",
+      "접근성·개발 체계: WCAG AA 기준 터치 타깃 ≥44px·키보드 네비게이션, 154개 커밋을 4개 Phase·40여 Step으로 구조화(소스 48개 파일·6개 라우트)",
+    ],
+    detailedTechStack:
+      "React 19, TypeScript 6, Vite 8, Tailwind CSS 4, TanStack Query 5, Zustand 5, Supabase (Auth/PostgreSQL/Storage/RLS), vite-plugin-pwa (Web Share Target), Vitest, Testing Library, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2026. 05.",
+    githubUrl: "https://github.com/guiyoung2/check_later",
+    liveUrl: "https://check-later.vercel.app/",
+    techStack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Supabase",
+      "Tailwind CSS",
+      "PWA",
+    ],
+    thumbnailSrc: "/projects/check_later.webp",
+    thumbnailAlt: "Check Later 프로젝트 썸네일",
+  },
+  {
     id: 8,
     title: "GeminiChat",
     description:
