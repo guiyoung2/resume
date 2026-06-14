@@ -12,9 +12,9 @@ import {
 const MENU_ITEMS = [
   { label: "Intro", id: "intro" },
   { label: "About", id: "about" },
-  { label: "AI Workflow", id: "workflow" },
   { label: "Skills", id: "skills" },
   { label: "Projects", id: "projects" },
+  { label: "AI Workflow", id: "workflow" },
   { label: "Contact", id: "contact" },
 ] as const;
 

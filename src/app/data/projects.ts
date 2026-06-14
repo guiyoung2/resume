@@ -2,6 +2,72 @@ import type { ProjectItem } from "@/app/types/project";
 
 export const projects: ProjectItem[] = [
   {
+    id: 11,
+    title: "Costflow",
+    description:
+      "npm에 배포한 CLI와 Next.js 대시보드를 모노레포로 설계한 풀스택 제품으로, 개발 세션·토큰 사용 데이터를 hook으로 자동 수집·시각화합니다.",
+    detailedDescription:
+      "Claude Code·Codex의 세션·토큰·tool 사용 데이터를 hook으로 자동 수집해 웹 대시보드에서 분석하는 풀스택 제품입니다. npm workspaces 모노레포로 Next.js 대시보드(apps)와 CLI(packages/cli)를 함께 설계하고, CLI는 costflow-ai로 npm에 공개 배포했습니다. transcript의 토큰 4종 분리, turn 단위 멱등 집계, 전송 실패에도 작업을 막지 않는 장애 허용(outbox) 수집까지 데이터 수집의 정확성·신뢰성을 직접 설계한 것이 핵심입니다. plan/fix 폴더로 phase·roadmap을 정리하고 harness 기반 다중 검증 워크플로우로 작업했습니다.",
+    highlights: [
+      "모노레포 풀스택 설계 + npm 배포: npm workspaces로 apps(Next.js 15 대시보드+API route)와 packages/cli를 함께 구성하고, CLI를 costflow-ai로 npm에 공개 배포",
+      "토큰 4종 분리 집계(과다 집계 방지): transcript usage의 input·output·cache_creation·cache_read를 합산하지 않고 컬럼 단위로 분리 저장 — 캐시 토큰이 청구 기준과 다르게 부풀려지는 문제 차단, 대시보드에서 목적별 선택 합산",
+      "멱등 turn 집계: Stop hook이 세션 종료가 아니라 turn마다 발생하는 점을 파악해 (session_id, turn_index) 유니크 제약 + 증분(delta) 파싱으로 동일 turn 중복 합산 방지",
+      "장애 허용 수집(outbox 패턴): 전송 실패 시 로컬 outbox(SQLite, better-sqlite3)에 보관 후 성공 종료해 에디터 작업을 막지 않으며, 다음 hook 실행·flush 시 재전송",
+      "멀티 소스 hook 통합: Claude Code(transcript JSONL 파싱)와 Codex(세션 파일 스캔·sync) 두 경로를 동일 이벤트 스키마로 통합 — hook payload엔 토큰이 없어 transcript_path 파싱으로 추출",
+      "프라이버시 설계: 프롬프트 마스킹 3모드(raw·redacted·metadata_only)를 서버 전송 전 로컬에서 적용하고, Supabase RLS로 사용자별 데이터 격리",
+      "테스트: CLI 파서·hook·transcript 핵심 로직에 단위 테스트 적용 (Vitest)",
+    ],
+    detailedTechStack:
+      "Next.js 15 (App Router), TypeScript (strict), Supabase (Auth/PostgreSQL/RLS), Node.js CLI (costflow-ai, npm 배포), better-sqlite3, npm workspaces 모노레포, Vitest, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2026. 06.",
+    githubUrl: "https://github.com/guiyoung2/costflow",
+    liveUrl: "https://costflow-seven.vercel.app/",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Node.js CLI",
+      "Monorepo",
+      "SQLite",
+    ],
+    thumbnailSrc: "/projects/costflow.png",
+    thumbnailAlt: "Costflow 프로젝트 썸네일",
+  },
+  {
+    id: 10,
+    title: "oil_now",
+    description:
+      "Opinet 공공 유가 API와 카카오맵을 연동해 \"지금 내 주변에서 가장 싼 주유소\"를 몇 초 안에 찾도록 만든 모바일 우선 유가 대시보드입니다.",
+    detailedDescription:
+      "실시간 전국·지역 평균 유가, 위치 기반 주변 주유소 가격, 유가 뉴스를 한 곳에 모은 모바일 우선 웹앱입니다. \"앱을 연 지 몇 초 안에 가장 싼 주유 선택지를 찾는다\"를 성공 기준으로 잡았습니다. Supabase Edge Function과 pg_cron으로 Opinet 공공 API를 매일 자동 수집하는 서버리스 데이터 파이프라인을 직접 구축하고, 숫자(가격·거리)를 주인공으로 두는 글랜스 UX와 색 역할 분리·숫자 우선 위계를 토큰화한 디자인 시스템을 정의했습니다. plan/fix 폴더로 31개 Step을 TDD로 추적하며 harness 기반으로 작업했습니다.",
+    highlights: [
+      "서버리스 수집 파이프라인: Supabase Edge Function(collect-prices·around-stations·collect-regional-avg·collect-news)으로 Opinet API를 수집하고 pg_cron으로 매일 자동 적재(KST). KATEC→WGS84 좌표 변환을 _shared 모듈로 단일화, 1회 실행에 1,667행·1,356개 주유소 적재",
+      "데이터 신뢰성: collection_logs를 success/partial/fail 3-state로 기록(HTTP 200이어도 rows=0이면 partial), service_role 키를 Supabase Vault 시크릿으로 참조해 평문 노출 차단, 조합 단위 배치 upsert로 DB 왕복 최소화",
+      "위치 기반 최저가 글랜스 UX: Geolocation 좌표로 거리 계산 후 가격·거리 정렬·최저가 배지, 카카오맵 SDK 말풍선 오버레이로 상호·가격·거리 표시",
+      "성능 최적화: 단일 835KB CSR 번들을 React.lazy 라우트 분할 + recharts(319KB) 지연 로딩으로 분리하고 폰트 렌더 블로킹 체인 제거 → Lighthouse Performance 79→82, FCP 2.7→2.3s, LCP 4.7→4.4s",
+      "접근성: axe-core 자동 테스트 + 키보드·터치 타깃(≥44px) 테스트, 가격 변동을 색+▲▼로 이중 표기(색약 배려), 명도대비 보정 → Lighthouse Accessibility 100·Best-Practices 100",
+      "디자인 시스템 직접 정의: 색 역할 분리(그린=액션, 빨강·파랑=가격 변동)·숫자 우선 위계를 Tailwind v4 @theme 토큰으로 정의한 DESIGN.md, 'AI 슬롭·클로드 룩' 안티레퍼런스 명문화",
+      "리스트 가상화 + 테스트: @tanstack/react-virtual 가상 스크롤, Vitest+RTL+MSW로 101개 테스트(23개 파일) 전수 통과",
+    ],
+    detailedTechStack:
+      "React 19, TypeScript 6, Vite 8, Tailwind CSS 4, TanStack Query 5, Zustand 5, React Router 7, recharts 3, @tanstack/react-virtual, 카카오맵 SDK, Supabase (Edge Functions/pg_cron/RLS), Deno, vite-plugin-pwa, Vitest, Testing Library, MSW, axe-core, Vercel",
+    projectType: "개인 프로젝트",
+    period: "2026. 06.",
+    githubUrl: "https://github.com/guiyoung2/oil_now",
+    liveUrl: "https://oil-now.vercel.app/",
+    techStack: [
+      "React",
+      "TypeScript",
+      "TanStack Query",
+      "Zustand",
+      "Kakao Map",
+      "Supabase",
+    ],
+    thumbnailSrc: "/projects/oil_now.png",
+    thumbnailAlt: "oil_now 프로젝트 썸네일",
+  },
+  {
     id: 9,
     title: "Check Later",
     description:
