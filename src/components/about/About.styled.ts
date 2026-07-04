@@ -11,12 +11,8 @@ export const AboutContainer = styled.div`
   max-width: 1040px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.25fr 0.95fr;
+  grid-template-columns: 1fr;
   gap: 1.25rem;
-
-  @media (max-width: 960px) {
-    grid-template-columns: 1fr;
-  }
 `
 
 export const AboutCard = styled.article`
@@ -55,7 +51,7 @@ export const AboutDescription = styled.p`
 export const CareerCard = styled(AboutCard)`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1.25rem;
 `
 
 export const CareerCompany = styled.h3`
@@ -81,4 +77,89 @@ export const CareerPlaceholder = styled.p`
   color: #64748b;
   font-size: 0.9rem;
   line-height: 1.75;
+`
+
+export const CareerProjectBlock = styled.div`
+  padding-top: 1.25rem;
+  border-top: 1px solid #e2e8f0;
+`
+
+export const CareerProjectTitle = styled.h4`
+  color: #0f172a;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.625rem;
+`
+
+export const CareerLinkList = styled.ul`
+  list-style: none;
+  margin-bottom: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  a {
+    color: #4f46e5;
+    font-size: 0.9rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+export const CareerDutyList = styled.ul`
+  list-style: disc;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+
+  li {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+`
+
+export const CareerExtra = styled.p`
+  color: #64748b;
+  font-size: 0.9rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e2e8f0;
+
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+export const InsightGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+export const InsightTitle = styled.h4`
+  color: #0f172a;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.625rem;
+`
+
+export const InsightDescription = styled.p`
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  word-break: keep-all;
 `

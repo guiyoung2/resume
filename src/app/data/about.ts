@@ -1,4 +1,8 @@
-import type { AboutContent, CareerContent } from "@/app/types/about";
+import type {
+  AboutContent,
+  CareerContent,
+  InsightItem,
+} from "@/app/types/about";
 
 export const aboutContent: AboutContent = {
   title: "비즈니스 요구사항을 기술적 가치로 전환하는 개발자",
@@ -14,6 +18,65 @@ export const careerContent: CareerContent = {
   meta: "개발팀 | 사원 | 정규직",
   period: "2024. 02. ~ 2025. 09. (1년 8개월)",
   description:
-    "교육 콘텐츠 제작 및 유지보수. AIDT(AI 디지털 교과서) 핵심 인터랙티브 콘텐츠와 교과서를 개발하고, 교육부 가이드라인을 상세히 분석해 공공 플랫폼에 최적화된 인터페이스를 설계했습니다. 또한 웹 접근성 인증 기준을 충족하는 표준화된 코드를 작성했으며, 기획 및 영상팀 등 유관 부서와 직접 소통하며 다양한 디바이스에 최적화된 교육 서비스를 제작했습니다.",
+    "교육 콘텐츠 제작 및 유지보수. 초등 교과서 전자저작물과 AIDT(AI 디지털 교과서) 인터랙티브 콘텐츠를 개발하고, 교육부 가이드라인과 웹 접근성 기준을 반영해 공공 플랫폼에 최적화된 교육 서비스를 만들었습니다.",
+  projects: [
+    {
+      title: "초등 교과서 전자저작물 개발",
+      links: [
+        {
+          label: "실과 (이춘식)",
+          url: "https://text.tsherpa.co.kr/ele/book.html?bookcode=text-ele-practice-le-01",
+        },
+        {
+          label: "사회 5·6 (김정인)",
+          url: "https://text.tsherpa.co.kr/ele/book.html?bookcode=text-ele-society-kj-05",
+        },
+      ],
+      duties: [
+        "교육부 가이드라인 분석 기반 공공 플랫폼 최적화 UI/UX 구현",
+        "교과서 분량의 학습 콘텐츠 대량 개발(양산)",
+        "웹 접근성 기준을 반영한 표준 마크업/스타일 적용",
+        "운영 이슈 대응·기능 개선·번들링 최적화를 병행해 서비스 안정성 강화",
+        "기획팀·영상팀 등 유관 부서와 협업하며 요구사항을 기술 관점으로 구체화",
+      ],
+    },
+    {
+      title: "AIDT(AI 디지털 교과서) 중등 영어 1·2 개발",
+      links: [
+        {
+          label: "영어 1·2 (이상기)",
+          url: "https://text.tsherpa.co.kr/mid/book.html?bookcode=text-mid-english-lsk",
+        },
+      ],
+      duties: [
+        "시맨틱 마크업과 웹 접근성(KWCAG) 준수 콘텐츠 개발 (키보드 내비게이션·스크린 리더 검증 포함)",
+        "교과서 단원별 인터랙티브 퀴즈·학습 콘텐츠 구현 (마우스 대안 키보드 인터랙션 포함)",
+        "크로스 브라우저 및 반응형 대응",
+        "AI 분석용 학습 이력 저장 로직을 기반으로 한 평가 모듈 구현",
+      ],
+    },
+  ],
+  extraLink: {
+    label: "영업용 수학 학습 콘텐츠 (토이 작업물)",
+    url: "https://math-toy.vercel.app/",
+  },
   techStackText: "HTML, CSS, JavaScript, TypeScript",
 };
+
+export const insightsContent: InsightItem[] = [
+  {
+    title: "초기 설계가 곧 개발 속도",
+    description:
+      "사내 첫 신규 사업이었던 AIDT 프로젝트에서 체계 없이 구현부터 시작했을 때의 비효율 — 웹 접근성 대응, 반복 작업에서의 코드 재사용, 요구사항 변경 대응 — 을 직접 겪었습니다. 이후 작업부터는 변수·네이밍 규칙, 접근성 기준, 재사용 가능한 공통 로직을 시작 전에 먼저 정의했고, 같은 유형의 작업을 훨씬 수월하고 능숙하게 진행할 수 있었습니다. 반복되는 인터랙션과 로직을 처음부터 잘 설계해 두면 유지보수와 신규 개발 모두 효율적인 프로세스가 된다는 것을 체감했습니다.",
+  },
+  {
+    title: "팀을 위한 코드",
+    description:
+      "코드는 나만 보는 것이 아니라는 점을 실무에서 배웠습니다. 제가 자리에 없어도 동료가 이해하고 유지보수할 수 있는 코드가 팀 업무를 수월하게 만듭니다. 기획팀·영상팀 등 유관 부서와 직접 소통하며 요구사항을 기술 관점으로 구체화하는 협업 방식도 이때 몸에 익혔습니다.",
+  },
+  {
+    title: "적응 먼저, 그 위에 역량",
+    description:
+      "새로운 환경에서는 기존에 가진 역량을 발휘하는 것보다 회사의 서비스와 개발 로직, 협업 방식에 먼저 적응하는 것이 우선이라고 생각합니다. 빠르게 학습하고 적응한 뒤, 그 안에서 반복되는 패턴을 정리하고 재사용 가능한 구조를 만들어 팀이 효율적으로 일할 수 있도록 기여하는 개발자를 지향합니다.",
+  },
+];
