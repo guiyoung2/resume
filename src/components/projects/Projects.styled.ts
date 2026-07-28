@@ -278,3 +278,50 @@ export const ModalLinkGroup = styled.div`
   gap: 0.5rem;
   margin-top: 1rem;
 `;
+
+export const CompactGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const CompactCard = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    border-color: #c7d2fe;
+    background: #fbfcff;
+  }
+`;
+
+export const CompactTitle = styled.h4`
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0f172a;
+`;
+
+export const CompactDescription = styled.p`
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: #64748b;
+  word-break: keep-all;
+`;
+
+export const CompactMeta = styled.p`
+  font-size: 0.75rem;
+  color: #94a3b8;
+`;

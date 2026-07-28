@@ -14,6 +14,10 @@ import {
   ContactLabel,
   ContactValue,
   ArrowIcon,
+  NoteBlock,
+  NoteText,
+  NoteLinkList,
+  NoteLink,
 } from "./Contact.styled";
 
 export default function Contact() {
@@ -52,6 +56,22 @@ export default function Contact() {
               </ContactItem>
             ))}
           </ContactList>
+
+          <NoteBlock>
+            <NoteText>{contactContent.note.text}</NoteText>
+            <NoteLinkList>
+              {contactContent.note.links.map((link) => (
+                <NoteLink
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {link.label} ↗
+                </NoteLink>
+              ))}
+            </NoteLinkList>
+          </NoteBlock>
         </ContactCard>
       </ContactContainer>
     </ContactSection>

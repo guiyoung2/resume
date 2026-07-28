@@ -103,3 +103,35 @@ export const ArrowIcon = styled.span`
   font-size: 1rem;
   line-height: 1;
 `;
+
+export const NoteBlock = styled.div`
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+`;
+
+export const NoteText = styled.p`
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: #64748b;
+  word-break: keep-all;
+`;
+
+export const NoteLinkList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+`;
+
+export const NoteLink = styled.a`
+  font-size: 0.8125rem;
+  color: #64748b;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #0f172a;
+  }
+`;

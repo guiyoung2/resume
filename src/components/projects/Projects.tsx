@@ -8,8 +8,14 @@ import {
   ProjectsContainer,
   SectionLabel,
   ProjectsTitle,
+  GroupTitle,
   ProjectsGrid,
   ProjectCard,
+  CompactGrid,
+  CompactCard,
+  CompactTitle,
+  CompactDescription,
+  CompactMeta,
   ThumbnailFrame,
   CardHead,
   CardTitle,
@@ -60,7 +66,9 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null,
   );
-  
+
+  const featuredProjects = projects.filter((project) => project.featured);
+  const otherProjects = projects.filter((project) => !project.featured);
 
   const renderProjectCard = (project: ProjectItem) => (
     <ProjectCard
@@ -117,6 +125,26 @@ export default function Projects() {
     </ProjectCard>
   );
 
+  const renderCompactCard = (project: ProjectItem) => (
+    <CompactCard
+      key={project.id}
+      onClick={() => setSelectedProject(project)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setSelectedProject(project);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`${project.title} 상세보기`}
+    >
+      <CompactTitle>{project.title}</CompactTitle>
+      <CompactDescription>{project.description}</CompactDescription>
+      <CompactMeta>{project.techStack.join(" · ")}</CompactMeta>
+    </CompactCard>
+  );
+
   useEffect(() => {
     if (!selectedProject) {
       return;
@@ -145,7 +173,11 @@ export default function Projects() {
         <SectionLabel>Projects</SectionLabel>
         <ProjectsTitle>프로젝트 목록</ProjectsTitle>
 
-        <ProjectsGrid>{projects.map(renderProjectCard)}</ProjectsGrid>
+        <GroupTitle>대표 프로젝트</GroupTitle>
+        <ProjectsGrid>{featuredProjects.map(renderProjectCard)}</ProjectsGrid>
+
+        <GroupTitle>그 외 작업</GroupTitle>
+        <CompactGrid>{otherProjects.map(renderCompactCard)}</CompactGrid>
       </ProjectsContainer>
 
       {selectedProject ? (

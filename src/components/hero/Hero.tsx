@@ -27,7 +27,7 @@ export default function Hero() {
           <HeroNameAccent>김귀영</HeroNameAccent>입니다
         </HeroTitle>
         <HeroSubtitle>
-          비즈니스 요구사항을 기술적 가치로 전환하는 개발자
+          접근성과 호환성을 기준으로 화면을 만들어 온 프론트엔드 개발자
         </HeroSubtitle>
         <HeroButtons>
           <HeroPrimaryLink

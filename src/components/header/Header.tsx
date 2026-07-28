@@ -14,7 +14,6 @@ const MENU_ITEMS = [
   { label: "About", id: "about" },
   { label: "Skills", id: "skills" },
   { label: "Projects", id: "projects" },
-  { label: "AI Workflow", id: "workflow" },
   { label: "Contact", id: "contact" },
 ] as const;
 
